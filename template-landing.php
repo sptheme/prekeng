@@ -20,9 +20,10 @@ Template Name: Landing page
 		</div>
 	</div> <!-- #home-slider-section -->	
 
+	<?php do_action( 'sp_start_content_wrap_html' ); ?>
+		<div class="main">
 	<!-- Start Welcome message or slogan -->
 	<div id="welcome-section">	
-		<div class="container clearfix">
 	<?php
 		// Start welcome message
 		while ( have_posts() ) : the_post(); ?>
@@ -30,30 +31,11 @@ Template Name: Landing page
 			<?php the_content(); ?>
 			
 	<?php endwhile; ?>
-		</div>
 	</div> <!-- .welcome -->
 
-	<!-- Start Facilities highlight -->
-	<!-- <div id="facility-section">
-		<div class="container clearfix">
-		<h3 class="section-title"><?php echo $home_meta['sp_facility_title'][0]; ?></h3>
-		<p class="desc"><?php echo $home_meta['sp_facility_desc'][0]; ?></p>
-		<?php 
-			$parent_page_id = $home_meta['sp_facility_page_id'][0];
-			$post_column = $home_meta['sp_column_item'][0];
-			$args = array ( 'child_of' => $parent_page_id, 'sort_column' => 'menu_order' ); 
-			echo sp_grid_featured_page( $args, $post_column );
-		?>
-		</div> 
-	</div> --> <!-- .facilitys -->
-
-	<!-- <div id="about-section">
-		<div class="container clearfix">
-		<h3 class="section-title">Tamarind Residence</h3>
-		<p class="desc">Our apartment is a green oasis located in the southeast outskirts of Phnom Penh with only six exclusive, brand new apartments. All with a great view on the very large garden.</p>
-		<a class="button" href="#">See Building Detail</a>
-		</div>
-	</div> --> <!-- #about-section -->
+	</div><!-- #main -->
+	<?php get_sidebar();?>
+	<?php do_action( 'sp_end_content_wrap_html' ); ?>	
 
 	
 <?php get_footer(); ?>

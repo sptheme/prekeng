@@ -433,6 +433,7 @@ function rw_maybe_include() {
 
 /*  Register meta boxes
 /* ------------------------------------ */
+	ot_register_meta_box( $page_layout_options );
 	ot_register_meta_box( $post_format_audio );
 	ot_register_meta_box( $post_format_chat );
 	ot_register_meta_box( $post_format_gallery );
@@ -446,7 +447,5 @@ function rw_maybe_include() {
 	$template_file = rw_maybe_include();
 	if ( $template_file == 'template-apartment.php' ) {
 		ot_register_meta_box( $page_template_apartment ); 
-	}else {
-		ot_register_meta_box( $page_layout_options );
 	}
 }
