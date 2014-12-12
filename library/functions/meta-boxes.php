@@ -213,6 +213,32 @@ $post_type_slideshow = array(
 );
 
 /* ---------------------------------------------------------------------- */
+/*	Client post type
+/* ---------------------------------------------------------------------- */
+$post_type_client = array(
+	'id'          => 'client-setting',
+	'title'       => 'Client meta',
+	'desc'        => '',
+	'pages'       => array( 'sp_client' ),
+	'context'     => 'normal',
+	'priority'    => 'high',
+	'fields'      => array(
+		array(
+			'label'		=> 'Client Cite',
+			'id'		=> $prefix . 'client_cite',
+			'type'		=> 'text',
+			'desc'		=> 'e.g: Manging Director'
+		),
+		array(
+			'label'		=> 'Client Cite Subtext',
+			'id'		=> $prefix . 'client_cite_subtext',
+			'type'		=> 'text',
+			'desc'		=> '(optional) Can be company/organization name e.g: Naga World Hotel'
+		)
+	)
+);
+
+/* ---------------------------------------------------------------------- */
 /*	Branch
 /* ---------------------------------------------------------------------- */
 $post_type_branch = array(
@@ -253,7 +279,7 @@ $post_type_branch = array(
 /* ---------------------------------------------------------------------- */
 /*	Metabox for Home template
 /* ---------------------------------------------------------------------- */
-$page_template_home = array(
+/*$page_template_home = array(
 	'id'          => 'home-settings',
 	'title'       => 'Home settings',
 	'desc'        => '',
@@ -332,7 +358,7 @@ $page_template_home = array(
 			'desc'		=> 'e.g. 5 (-1 show all sub page)'
 		)
 	)
-);
+);*/
 
 /* ---------------------------------------------------------------------- */
 /*	Meta box for Apartment template
@@ -414,12 +440,11 @@ function rw_maybe_include() {
 	ot_register_meta_box( $post_format_quote );
 	ot_register_meta_box( $post_format_video );
 	ot_register_meta_box( $post_type_slideshow );
+	ot_register_meta_box( $post_type_client );
 	ot_register_meta_box( $post_type_branch );
 
 	$template_file = rw_maybe_include();
-	if ( $template_file == 'template-landing.php' ) {
-	    ot_register_meta_box( $page_template_home );
-	} elseif ( $template_file == 'template-apartment.php' ) {
+	if ( $template_file == 'template-apartment.php' ) {
 		ot_register_meta_box( $page_template_apartment ); 
 	}else {
 		ot_register_meta_box( $page_layout_options );

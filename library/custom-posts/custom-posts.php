@@ -10,11 +10,13 @@
 if ( ! isset( $cp_menu_position ) )
 	$cp_menu_position = array(
 			'menu_slideshow'	=> 30,
-			'menu_branch'		=> 33
+			'menu_client'		=> 33,
+            'menu_branch'       => 39
 		);
 
 //All custom posts
 load_template( SP_BASE_DIR . '/library/custom-posts/cp-slideshow.php' );
+load_template( SP_BASE_DIR . '/library/custom-posts/cp-client.php' );
 load_template( SP_BASE_DIR . '/library/custom-posts/cp-branch.php' );
 
 //Taxonomies

@@ -37,6 +37,7 @@ function sp_add_shortcodes() {
 	add_shortcode( 'tab', 'sp_tab_shortcode' );
 	add_shortcode( 'slideshow', 'sp_slideshow_sc' );
 	add_shortcode( 'featured_page', 'sp_featured_page_sc' );
+	add_shortcode( 'client', 'sp_client_sc' );
 	add_shortcode( 'branch', 'sp_branch_sc' );
 	
 }
@@ -264,6 +265,26 @@ function sp_featured_page_sc( $atts, $content = null ){
 				'child_of' => $parent_page_id
 			);
 	$out = sp_grid_featured_page( $args, $column );
+
+	return $out;
+
+}
+
+/*--------------------------------------------------------------------------------------*/
+/* Client shortcode
+/*--------------------------------------------------------------------------------------*/
+function sp_client_sc( $atts, $content = null ){
+
+	global $post;
+
+	extract( shortcode_atts( array(
+		'style' => null,
+		'post_num' => null,
+	), $atts ) );
+
+	$args = array ( 'posts_per_page' => $post_num );
+
+	$out = ( $style == 'slide' ) ? sp_client_posts_slide( $args ) : sp_client_posts_list( $args );
 
 	return $out;
 

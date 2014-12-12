@@ -489,20 +489,15 @@ if ( ! function_exists( 'sp_grid_featured_page' ) ) {
 
 		if ( $featured_pages ) :
 
-		$out = '<div class="featured-page clearfix sp-grid">';	
+		$out = '<div class="featured-page clearfix sp-grid aligncenter">';	
 
 		foreach ( $featured_pages as $page ) {
 			$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id( $page->ID ), 'large' );
             $image_url = aq_resize( $thumb_url[0], '580', '390', true);
 
-			$out .= '<figure class="' . sp_column_class($column) . ' effect-vanda">';
+			$out .= '<figure class="' . sp_column_class($column) . ' effect-classic">';
 			$out .= '<img src="' . $image_url . '">';
-			$out .= '<figcaption>';
-			$out .= '<div>';
-			$out .= '<h4>' . $page->post_title . '</h4>';
-			$out .= '</div>';
-			$out .= '<a href="'.get_permalink( $page->ID ).'"><span>View more</span></a>';
-			$out .= '</figcpation>';
+			$out .= '<h5><a href="'.get_permalink( $page->ID ).'">' . $page->post_title . '</a></h5>';
 			$out .= '</figure>';
 		}
 
@@ -672,7 +667,7 @@ if ( ! function_exists( 'sp_get_slideshow_post' ) ) {
 	        $learn_more_link = get_post_meta( $post->ID, 'sp_slide_btn_url', true );
 
 	        $thumb_url = sp_post_thumbnail('large');
-	        $image_url = aq_resize( $thumb_url, '1280', '567', true);
+	        $image_url = aq_resize( $thumb_url, '932', '413', true);
 	        
 	        $caption = get_the_content();
 
@@ -747,6 +742,131 @@ if ( ! function_exists( 'sp_get_meta_slideshow' ) ) {
 	    $out .= '</div>';
 
 		return $out;	
+	}
+}
+
+/**
+ * ----------------------------------------------------------------------------------------
+ * Render Client Post Type
+ * ----------------------------------------------------------------------------------------
+ */
+
+/**
+ * Render client posts as slideshow 
+ *
+ * @return 	string
+ *
+ */
+if ( !function_exists('sp_client_posts_slide') ) {
+	function sp_client_posts_slide( $args = array() ) {
+
+		$defaults = array(
+				'post_type' => 'sp_client',
+				'posts_per_page' => -1
+			);
+		$args = wp_parse_args( $args, $defaults );
+		extract( $args );
+
+		$custom_query = new WP_Query($args);
+
+		if ( $custom_query->have_posts() ): ?>
+
+		<script type="text/javascript">
+			jQuery(document).ready(function($){
+				$("#client-post").flexslider({
+					animation: "fade",
+					slideshowSpeed: 5000,
+					animationDuration: 200,
+					animationLoop: true,
+					pauseOnAction: true,
+					pauseOnHover: true,
+				});
+			});		
+		</script>
+
+		<?php 
+			$out = '<div id="client-post" class="client-post flexslider">';
+			$out .= '<ul class="slides">';
+			while ( $custom_query->have_posts() ) : $custom_query->the_post();
+				
+				$post_id = get_the_ID();
+				$title = get_the_title();
+				$content = get_the_content();
+				$post_meta = get_post_meta( get_the_ID() );
+				
+				$out .= '<li>';
+				$out .= client_post_content( $post_id, $title, $content,  $post_meta );
+				$out .= '</li>';
+
+			endwhile;
+			wp_reset_postdata();
+			$out .= '</ul>';
+			$out .= '</div>';
+		endif;
+
+		return $out;
+	}	
+}
+
+
+/**
+ * Render client posts as list view
+ *
+ * @return 	string
+ *
+ */
+if ( !function_exists('sp_client_posts_list') ) {
+	function sp_client_posts_list( $args = array() ) {
+
+		$defaults = array(
+				'post_type' => 'sp_client',
+				'posts_per_page' => -1
+			);
+		$args = wp_parse_args( $args, $defaults );
+		extract( $args );
+
+		$custom_query = new WP_Query($args);
+
+		if ( $custom_query->have_posts() ): 
+
+			$out = '<div class="client-post">';
+			while ( $custom_query->have_posts() ) : $custom_query->the_post();
+				
+				$post_id = get_the_ID();
+				$title = get_the_title();
+				$content = get_the_content();
+				$post_meta = get_post_meta( get_the_ID() );
+
+				$out .= client_post_content( $post_id, $title, $content,  $post_meta );
+
+			endwhile;
+			wp_reset_postdata();
+			$out .= '</div>';
+		endif;
+
+		return $out;
+	}	
+}
+
+
+
+/**
+ * Render HTML of single client content
+ *
+ * @return 	string
+ *
+ */
+if ( !function_exists('client_post_content') ) {
+	function client_post_content( $post_id = '', $title = '', $content = '',  $post_meta = array() ) {
+
+		$out = '<article id="post-' . $post_id . '">';
+		$out .= '<p class="client-say">' . $content . '</p>';
+		$out .= '<span class="client-name">' . $title . '</span>';
+		$out .= '<span class="client-position">' . $post_meta['sp_client_cite'][0] . '</span>, ';
+		$out .= '<span class="client-company">' . $post_meta['sp_client_cite_subtext'][0] . '</span>';
+		$out .= '</article>';
+
+		return $out;
 	}
 }
 

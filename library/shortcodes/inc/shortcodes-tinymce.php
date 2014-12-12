@@ -17,8 +17,9 @@ function sp_shortcodes_register_mce_button_3( $buttons ) {
 	array_push( $buttons, 'accordion' );
 	array_push( $buttons, 'toggle' );
 	array_push( $buttons, 'tab' );
-	/*array_push( $buttons, 'slideshow' );
-	array_push( $buttons, 'featured_page' );*/
+	array_push( $buttons, 'slideshow' );
+	array_push( $buttons, 'featured_page' );
+	array_push( $buttons, 'client' );
 	array_push( $buttons, 'branch' );
 
     return $buttons;
@@ -60,8 +61,9 @@ function sp_shortcodes_add_tinymce_plugin($plugin_array) {
 	$plugin_array['accordion']		= ED_JS_URL . 'ed-accordion.js';
 	$plugin_array['toggle']			= ED_JS_URL . 'ed-toggle.js';
 	$plugin_array['tab']			= ED_JS_URL . 'ed-tab.js';
-	/*$plugin_array['slideshow']		= ED_JS_URL . 'ed-slideshow.js';
-	$plugin_array['featured_page']	= ED_JS_URL . 'ed-featured-page.js';*/
+	$plugin_array['slideshow']		= ED_JS_URL . 'ed-slideshow.js';
+	$plugin_array['featured_page']	= ED_JS_URL . 'ed-featured-page.js';
+	$plugin_array['client']			= ED_JS_URL . 'ed-client.js';
 	$plugin_array['branch']			= ED_JS_URL . 'ed-branch.js';
 	
     return $plugin_array;
@@ -82,7 +84,7 @@ function sp_shortcodes_add_mce_button() {
  }
 add_action( 'admin_head', 'sp_shortcodes_add_mce_button' );  
 
-//load_template( SC_INC_DIR . 'popup/ajax-featured-page-shortcode.php' );
+load_template( SC_INC_DIR . 'popup/ajax-featured-page-shortcode.php' );
 load_template( SC_INC_DIR . 'popup/ajax-branch-shortcode.php' );
 
 ?>

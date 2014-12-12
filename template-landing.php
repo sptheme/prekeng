@@ -34,7 +34,7 @@ Template Name: Landing page
 	</div> <!-- .welcome -->
 
 	<!-- Start Facilities highlight -->
-	<div id="facility-section">
+	<!-- <div id="facility-section">
 		<div class="container clearfix">
 		<h3 class="section-title"><?php echo $home_meta['sp_facility_title'][0]; ?></h3>
 		<p class="desc"><?php echo $home_meta['sp_facility_desc'][0]; ?></p>
@@ -44,12 +44,16 @@ Template Name: Landing page
 			$args = array ( 'child_of' => $parent_page_id, 'sort_column' => 'menu_order' ); 
 			echo sp_grid_featured_page( $args, $post_column );
 		?>
-		</div>
-	</div> <!-- .facilitys -->
+		</div> 
+	</div> --> <!-- .facilitys -->
 
-	<div id="about-section">
-		<h3>Tamarind Residence</h3>
-	</div> <!-- #about-section -->
+	<!-- <div id="about-section">
+		<div class="container clearfix">
+		<h3 class="section-title">Tamarind Residence</h3>
+		<p class="desc">Our apartment is a green oasis located in the southeast outskirts of Phnom Penh with only six exclusive, brand new apartments. All with a great view on the very large garden.</p>
+		<a class="button" href="#">See Building Detail</a>
+		</div>
+	</div> --> <!-- #about-section -->
 
 	
 <?php get_footer(); ?>

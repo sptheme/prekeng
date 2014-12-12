@@ -133,7 +133,7 @@
 .button {
   font-size: 12px;
   display: inline-block;
-  border:2px solid #0c4da1;
+  border:2px solid #0d7901;
   padding: 3px 20px;
   text-transform: uppercase;
   -webkit-border-radius: 4px;
@@ -141,7 +141,7 @@
           border-radius: 4px;
 }
 .button:hover {
-  background: #101F78;
+  background: #0e8c01;
   color: #DDA838;
   text-decoration: none;
 }
@@ -432,7 +432,8 @@
 hr.dashed, hr.dotted, hr.single, hr.double{
     clear: both;
     position: relative;
-    width: 100%
+    width: 80%;
+    margin: 0 auto;
 }
 hr.dashed { border: none; border-bottom:1px dashed #e7e7e7; }
 hr.dotted { background:url(../images/bg-border.png) repeat-x; height:7px; border:none; }

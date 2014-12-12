@@ -15,7 +15,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   margin: 0;
-  color:#3B3B3B;
+  color: #0c7401;
 }
 h1 {
   font-size:28px;
@@ -50,7 +50,7 @@ h6 {
 
 /* Link */
 a, a > * {
-	color: #001848; /* #4d90fe; */
+	color: #0c7401; /* #4d90fe; */
 	text-decoration: none;
 	-webkit-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
 	   -moz-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
@@ -190,6 +190,8 @@ sub {
 hr {
 	border:1px solid #e7e7e7;
 	margin-bottom: 1.5em;
+	width: 80%;
+	margin: 0 auto;
 }
 	p + hr { margin: 25px 0 20px; }
 
