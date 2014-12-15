@@ -122,7 +122,7 @@ if( !function_exists('sp_apple_touch_icon') )
 	function sp_apple_touch_icon() {
 
 		$out = '';
-		$favicon = ot_get_option('favicon');
+		$favicon = ot_get_option('custom-favicon');
 		$iphone_icon = ot_get_option('custom-iphone-icon57');
 		$ipad_icon = ot_get_option('custom-ipad-icon72');
 		$iphone_retina_icon = ot_get_option('custom-iphone-icon114');
