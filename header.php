@@ -39,13 +39,12 @@
     <div class="navigation-overlay"></div>
 
     <header id="header" class="bg-diamond">
-        <div class="container clearfix">
         <div class="menu-button">
             <span class="border-before"></span>
             <span class="border-main"></span>
             <span class="border-after"></span>
         </div> <!-- .menu-button -->
-
+        <div class="container clearfix">
         <!-- <div id="menu-trigger" class="mobile-menu-trigger left icon-menu"></div> -->
 
         <div class="brand" role="banner">
