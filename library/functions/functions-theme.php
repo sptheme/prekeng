@@ -496,7 +496,7 @@ if ( ! function_exists( 'sp_grid_featured_page' ) ) {
             $image_url = aq_resize( $thumb_url[0], '580', '390', true);
 
 			$out .= '<figure class="' . sp_column_class($column) . ' effect-classic">';
-			$out .= '<img src="' . $image_url . '">';
+			$out .= '<a href="'.get_permalink( $page->ID ).'"><img src="' . $image_url . '"></a>';
 			$out .= '<h5><a href="'.get_permalink( $page->ID ).'">' . $page->post_title . '</a></h5>';
 			$out .= '</figure>';
 		}
@@ -539,7 +539,7 @@ if ( ! function_exists( 'sp_list_featured_page' ) ) {
             $image_url = aq_resize( $thumb_url[0], '580', '290', true);
 
 			$out .= '<figure class="effect-vanda">';
-			$out .= '<img src="' . $image_url . '">';
+			$out .= '<a href="'.get_permalink( $page->ID ).'"><img src="' . $image_url . '"></a>';
 			$out .= '<figcaption>';
 			$out .= '<div>';
 			$out .= '<h4>' . $page->post_title . '</h4>';
@@ -604,7 +604,7 @@ if ( ! function_exists( 'sp_slide_featured_page' ) ) {
 
             $out .= '<li>';
 			$out .= '<figure class="effect-vanda">';
-			$out .= '<img src="' . $image_url . '">';
+			$out .= '<a href="'.get_permalink( $page->ID ).'"><img src="' . $image_url . '"></a>';
 			$out .= '<figcaption>';
 			$out .= '<div>';
 			$out .= '<h4>' . $page->post_title . '</h4>';

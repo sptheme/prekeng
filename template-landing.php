@@ -12,8 +12,8 @@ Template Name: Landing page
 	<div id="slideshow-section" class="bg-flower">
 		<div class="container">
 			<?php 
-				$slide_number = $home_meta['sp_slide_num'][0];
-				$slide_effect = $home_meta['sp_slide_effect'][0];
+				$slide_number = 5;
+				$slide_effect = 'slide';
 				$args = array( 'posts_per_page' => $slide_number, 'post_type' => 'slideshow', 'suppress_filters' => false );
 				echo sp_get_slideshow_post( $args, $slide_effect );
 			?>
