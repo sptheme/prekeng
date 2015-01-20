@@ -400,6 +400,69 @@ $page_template_apartment = array(
 );
 
 /* ---------------------------------------------------------------------- */
+/*	Meta box for Contact template
+/* ---------------------------------------------------------------------- */
+$page_template_contact_info = array(
+	'id'          => 'contact-settings',
+	'title'       => 'Contact infomation',
+	'desc'        => '',
+	'pages'       => array( 'page' ),
+	'context'     => 'normal',
+	'priority'    => 'high',
+	'fields'      => array(
+		array(
+			'label'		=> 'Address',
+			'id'		=> $prefix . 'address',
+			'type'		=> 'text',
+			'desc'		=> 'e.g: # A27-A28 , National Road No 1, Boeung Snoa Village, Pnom Penh, Cambodia',
+		),
+		array(
+			'label'		=> 'Marker location',
+			'id'		=> $prefix . 'lat_long_map',
+			'type'		=> 'text',
+			'desc'		=> 'Enter Latitute and longitute of google map. You can get it from <a href="http://itouchmap.com/latlong.html" target="_blank">iTouchMap</a>'
+		),
+		array(
+			'label'		=> 'Email',
+			'id'		=> $prefix . 'email',
+			'type'		=> 'text',
+			'desc'		=> '',
+		),
+		array(
+			'label'		=> 'Phone',
+			'id'		=> $prefix . 'phone',
+			'type'		=> 'text',
+			'desc'		=> 'e.g: +855 012 840 056',
+		)
+	)
+);
+
+$page_template_contact_distance = array(
+	'id'          => 'distance-settings',
+	'title'       => 'Distance settings',
+	'desc'        => 'Upload distance name and photo',
+	'pages'       => array( 'page' ),
+	'context'     => 'normal',
+	'priority'    => 'high',
+	'fields'      => array(
+		array(
+			'label'		=> 'Distance Table',
+			'id'		=> $prefix . 'map_gallery',
+			'type'		=> 'list-item',
+			'desc'		=> 'Add distance map to see how many distance direct to your place',
+			'settings'    => array( 
+	          array(
+	            'id'          => 'distance_map_photo',
+	            'label'       => 'Distance photo',
+	            'std'         => '',
+	            'type'        => 'upload',
+	          )
+	        )
+		)
+	)
+);
+
+/* ---------------------------------------------------------------------- */
 /*	Return meta box option base on page template selected
 /* ---------------------------------------------------------------------- */
 function rw_maybe_include() {
@@ -433,7 +496,6 @@ function rw_maybe_include() {
 
 /*  Register meta boxes
 /* ------------------------------------ */
-	ot_register_meta_box( $page_layout_options );
 	ot_register_meta_box( $post_format_audio );
 	ot_register_meta_box( $post_format_chat );
 	ot_register_meta_box( $post_format_gallery );
@@ -445,7 +507,12 @@ function rw_maybe_include() {
 	ot_register_meta_box( $post_type_branch );
 
 	$template_file = rw_maybe_include();
-	if ( $template_file == 'template-apartment.php' ) {
+	if ( $template_file == 'templates/template-apartment.php' ) {
 		ot_register_meta_box( $page_template_apartment ); 
+	} elseif ( $template_file == 'templates/template-contact.php' ) {
+		ot_register_meta_box( $page_template_contact_info );
+		ot_register_meta_box( $page_template_contact_distance ); 	
+	} else {
+		ot_register_meta_box( $page_layout_options );
 	}
 }
