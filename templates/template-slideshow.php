@@ -9,12 +9,17 @@ Template Name: Slideshow
 		$home_meta  = get_post_meta( $post->ID ); ?>
 
 	<!-- Start Slideshow -->
-	<?php $meta_slides = explode( ',', get_post_meta( $post->ID, 'sp_page_gallery', true ) ); if ( !empty($meta_slides) ) : ?>
+	<?php $meta_photos = explode( ',', get_post_meta( $post->ID, 'sp_page_gallery', true ) ); if ( !empty($meta_photos) ) : ?>
 	<div id="slideshow-section" class="bg-flower">
 		<div class="container clearfix">
 			<?php 
+				$photo_options = get_post_meta( $post->ID, 'sp_photo_options', true );
 				$slide_effect = get_post_meta( $post->ID, 'sp_slide_effect', true );
-				echo sp_get_meta_slideshow( $meta_slides, $slide_effect ); 
+				if ( $photo_options == 'slideshow' ) :  
+					echo sp_get_meta_slideshow( $meta_photos, $slide_effect ); 
+				else :
+					echo sp_meta_gallery_html( $meta_photos );
+				endif;
 			?>
 		</div>
 	</div> <!-- #home-slider-section -->	

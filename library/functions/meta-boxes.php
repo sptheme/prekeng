@@ -363,19 +363,38 @@ $post_type_branch = array(
 /* ---------------------------------------------------------------------- */
 /*	Meta box for Apartment template
 /* ---------------------------------------------------------------------- */
-$page_template_apartment = array(
-	'id'          => 'slideshow-settings',
-	'title'       => 'Slideshow settings',
-	'desc'        => 'Upload photos to show as slideshow',
+$page_template_slideshow = array(
+	'id'          => 'photo-settings',
+	'title'       => 'Photo settings',
+	'desc'        => '',
 	'pages'       => array( 'page' ),
 	'context'     => 'normal',
 	'priority'    => 'high',
 	'fields'      => array(
 		array(
+			'label'		=> 'Photo style',
+			'id'		=> $prefix . 'photo_options',
+			'type'		=> 'radio-image',
+			'desc'		=> 'Choose Slideshow or Gallery for page header',
+			'std'		=> 'slideshow',
+			'choices'	=> array(
+				array(
+					'value'		=> 'slideshow',
+					'label'		=> 'Slideshow',
+					'src'		=> SP_ASSETS . '/images/admin/slideshow.png'
+				),
+				array(
+					'value'		=> 'gallery',
+					'label'		=> 'Gallery',
+					'src'		=> SP_ASSETS . '/images/admin/gallery.png'
+				)
+			)
+		),
+		array(
 			'label'		=> 'Upload photo',
 			'id'		=> $prefix . 'page_gallery',
 			'type'		=> 'gallery',
-			'desc'		=> 'Upload photos'
+			'desc'		=> ''
 		),
 		array(
 			'label'		=> 'Slide Effect',
@@ -515,8 +534,8 @@ function rw_maybe_include() {
 	ot_register_meta_box( $page_layout_options );
 
 	$template_file = rw_maybe_include();
-	if ( $template_file == 'templates/template-apartment.php' ) {
-		ot_register_meta_box( $page_template_apartment ); 
+	if ( $template_file == 'templates/template-slideshow.php' ) {
+		ot_register_meta_box( $page_template_slideshow ); 
 	}
 	if ( $template_file == 'templates/template-contact.php' ) {
 		ot_register_meta_box( $page_template_contact_info );

@@ -696,7 +696,7 @@ if ( ! function_exists( 'sp_get_slideshow_post' ) ) {
 
 /**
  * ----------------------------------------------------------------------------------------
- * Render HTML Meta Slideshow in Apartment template
+ * Render HTML Meta Slideshow in Slideshow template
  * ----------------------------------------------------------------------------------------
  *
  * @return 	string
@@ -730,7 +730,7 @@ if ( ! function_exists( 'sp_get_meta_slideshow' ) ) {
 	    foreach ($meta_slide as $image ) :  
 	        
 	        $images = sp_get_post_attachment( $image );
-	        $image_url = aq_resize( $images['src'], '1280', '567', true);
+	        $image_url = aq_resize( $images['src'], '932', '413', true);
 
 	        $out .= '<li>';
 	        $out .= '<img src="' . $image_url . '">';
@@ -739,6 +739,43 @@ if ( ! function_exists( 'sp_get_meta_slideshow' ) ) {
 	    wp_reset_postdata();
 
 	    $out .= '</ul>';
+	    $out .= '</div>';
+
+		return $out;	
+	}
+}
+
+/**
+ * ----------------------------------------------------------------------------------------
+ * Render HTML Meta Gallery in Slideshow template
+ * ----------------------------------------------------------------------------------------
+ *
+ * @return 	string
+ *
+ */
+
+if ( ! function_exists( 'sp_meta_gallery_html' ) ) {
+	function sp_meta_gallery_html( $meta_gallery = array() ) {
+		global $post;
+
+		$count = 1;
+		$out = '<div class="meta-gallery">';
+	    foreach ($meta_gallery as $image ) :  
+	        
+	        $images = sp_get_post_attachment( $image );
+	        $image_url = aq_resize( $images['src'], '470', '316', true);
+	        $col_last = ($count%3 == 0) ? ' last' : '';
+
+	        $out .= '<div class="one-third' . $col_last . '">';
+	        $out .= '<a href="' . $images['src'] . '">';
+	        $out .= '<img src="' . $image_url . '">';
+	        $out .= '</a>';
+	        $out .= '</div>';
+
+	        $count++;
+	    endforeach;
+	    wp_reset_postdata();
+
 	    $out .= '</div>';
 
 		return $out;	
