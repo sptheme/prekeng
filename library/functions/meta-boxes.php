@@ -411,6 +411,13 @@ $page_template_contact_info = array(
 	'priority'    => 'high',
 	'fields'      => array(
 		array(
+			'label'		=> 'Introduction text',
+			'id'		=> $prefix . 'intro_text',
+			'type'		=> 'textarea',
+			'rows'		=> '2',
+			'std'		=> 'Cousy and affordable accomodation in a nice contest'
+		),
+		array(
 			'label'		=> 'Address',
 			'id'		=> $prefix . 'address',
 			'type'		=> 'text',
