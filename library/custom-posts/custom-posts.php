@@ -15,12 +15,12 @@ if ( ! isset( $cp_menu_position ) )
 		);
 
 //All custom posts
-load_template( SP_BASE_DIR . '/library/custom-posts/cp-slideshow.php' );
+//load_template( SP_BASE_DIR . '/library/custom-posts/cp-slideshow.php' );
 load_template( SP_BASE_DIR . '/library/custom-posts/cp-client.php' );
-load_template( SP_BASE_DIR . '/library/custom-posts/cp-branch.php' );
+//load_template( SP_BASE_DIR . '/library/custom-posts/cp-branch.php' );
 
 //Taxonomies
-load_template( SP_BASE_DIR . '/library/custom-posts/taxonomy-branch.php' );
+//load_template( SP_BASE_DIR . '/library/custom-posts/taxonomy-branch.php' );
 
 /**
  * ----------------------------------------------------------------------------------------

@@ -512,14 +512,14 @@ function rw_maybe_include() {
 	ot_register_meta_box( $post_type_slideshow );
 	ot_register_meta_box( $post_type_client );
 	ot_register_meta_box( $post_type_branch );
+	ot_register_meta_box( $page_layout_options );
 
 	$template_file = rw_maybe_include();
 	if ( $template_file == 'templates/template-apartment.php' ) {
 		ot_register_meta_box( $page_template_apartment ); 
-	} elseif ( $template_file == 'templates/template-contact.php' ) {
+	}
+	if ( $template_file == 'templates/template-contact.php' ) {
 		ot_register_meta_box( $page_template_contact_info );
 		ot_register_meta_box( $page_template_contact_distance ); 	
-	} else {
-		ot_register_meta_box( $page_layout_options );
-	}
+	} 
 }

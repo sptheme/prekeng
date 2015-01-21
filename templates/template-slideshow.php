@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Apartment page
+Template Name: Slideshow
 */?>
 
 <?php get_header(); ?>
