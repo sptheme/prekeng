@@ -19,6 +19,38 @@ $page_layout_options = array(
 	'priority'    => 'default',
 	'fields'      => array(
 		array(
+			'label'		=> 'Show title',
+			'id'		=> $prefix . 'show_title',
+			'type'		=> 'on-off',
+			'std'		=> 'on',
+			'desc'		=> 'Show/Hide page title'
+		),
+		array(
+			'label'		=> 'Alignment',
+			'id'		=> $prefix . 'align_title',
+			'type'		=> 'select',
+			'std'		=> 'left',
+			'desc'		=> 'Align page title',
+			'condition' => 'sp_show_title:is(on)',
+			'choices'     => array( 
+	          array(
+	            'value'       => 'left',
+	            'label'       => 'Left',
+	            'src'         => ''
+	          ),
+	          array(
+	            'value'       => 'right',
+	            'label'       => 'Right',
+	            'src'         => ''
+	          ),
+	          array(
+	            'value'       => 'center',
+	            'label'       => 'Center',
+	            'src'         => ''
+	          )
+	        )
+		),
+		array(
 			'label'		=> 'Primary Sidebar',
 			'id'		=> $prefix . 'sidebar_primary',
 			'type'		=> 'sidebar-select',

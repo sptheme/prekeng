@@ -19,6 +19,13 @@ function sp_featured_page_shortcode_ajax(){
 					</td>
 				</tr>
 				<tr>
+					<?php $field = 'postnum'; ?>
+					<th><label for="<?php echo $field; ?>"><?php _e( 'Number of page', 'sptheme_admin' ); ?></label></th>
+					<td>
+						<input type="text" value="3" name="<?php echo $field; ?>" id="<?php echo $field; ?>">
+					</td>
+				</tr>
+				<tr>
 					<?php $field = 'column'; ?>
 					<th><label for="<?php echo $field; ?>"><?php _e( 'Columns', 'sptheme_admin' ); ?></label></th>
 					<td>

@@ -479,7 +479,7 @@ if ( ! function_exists( 'sp_grid_featured_page' ) ) {
 		global $post;
 
 		$defaults = array(
-				'child_of' => 0,
+				'parent' => 0,
 				'sort_column' => 'menu_order'
 			);
 		$args = wp_parse_args( $args, $defaults );

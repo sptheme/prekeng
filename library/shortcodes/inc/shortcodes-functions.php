@@ -258,11 +258,13 @@ function sp_featured_page_sc( $atts, $content = null ){
 
 	extract( shortcode_atts( array(
 		'parent_page_id' => null,
+		'postnum' => null,
 		'column' => null
 	), $atts ) );
 
 	$args = array (
-				'child_of' => $parent_page_id
+				'parent' => $parent_page_id,
+				'number' => $postnum
 			);
 	$out = sp_grid_featured_page( $args, $column );
 

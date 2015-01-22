@@ -35,6 +35,7 @@
 		// but well, this gets the job done nonetheless
 		var options = { 
 			'parent_page_id' : null,
+			'postnum' : null,
 			'column' : null,
 			};
 		var shortcode = '[featured_page';

@@ -27,15 +27,20 @@ Template Name: Slideshow
 
 	<?php do_action( 'sp_start_content_wrap_html' ); ?>
 		<div class="main">
-			<div class="entry-content">
-	<?php
-		// Start welcome message
-		while ( have_posts() ) : the_post(); ?>
-			<?php the_title( '<header class="entry-header"><h1 class="entry-title">', '</h1></header><!-- .entry-header -->' ); ?>
-			<?php the_content(); ?>
+		<?php
+			// Start the Loop.
+			while ( have_posts() ) : the_post();
+
+				// Include the page content template.
+				get_template_part( SP_TEMPLATES . '/posts/content', 'page' );
+
+				// If comments are open or we have at least one comment, load up the comment template.
+				if ( comments_open() || get_comments_number() ) {
+					comments_template();
+				}
+			endwhile;
+		?>
 			
-	<?php endwhile; ?>
-			</div> <!-- .entry-content -->
 		</div><!-- #main -->
 	<?php get_sidebar();?>
 	<?php do_action( 'sp_end_content_wrap_html' ); ?>		

@@ -51,7 +51,6 @@
 
 				// Include the page content template.
 				get_template_part( SP_TEMPLATES . '/posts/content', 'page' );
-				get_template_part( 'content', 'page' );
 
 				// If comments are open or we have at least one comment, load up the comment template.
 				if ( comments_open() || get_comments_number() ) {
