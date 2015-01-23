@@ -28,8 +28,7 @@
 
 			var marker = new google.maps.Marker({
 				position: location,
-				map: map,
-				title: 'Hello World!'
+				map: map
 			});
 			google.maps.event.addListener(marker, 'click', function() {
 				map.panTo(marker.getPosition());
