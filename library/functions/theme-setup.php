@@ -76,7 +76,7 @@ function sp_custom_login_logo() {
 	
 	$out = '';
 	$out .='<style type="text/css">';
-	$out .='body.login{ background-color:#ffffff; }';
+	$out .='body.login{ background-color:#0c7401; }';
 	if ( ot_get_option('custom-logo') ) {	
 	    $out .='.login h1 a { background-image:url('. ot_get_option('custom-logo') .') !important; height: 90px!important; width: 100%!important; background-size: auto!important;}';
 	} else {

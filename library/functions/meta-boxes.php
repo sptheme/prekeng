@@ -455,42 +455,23 @@ $page_template_slideshow = array(
 /* ---------------------------------------------------------------------- */
 $page_template_contact_info = array(
 	'id'          => 'contact-settings',
-	'title'       => 'Contact infomation',
+	'title'       => 'Contact meta',
 	'desc'        => '',
 	'pages'       => array( 'page' ),
 	'context'     => 'normal',
 	'priority'    => 'high',
 	'fields'      => array(
 		array(
-			'label'		=> 'Introduction text',
-			'id'		=> $prefix . 'intro_text',
-			'type'		=> 'textarea',
-			'rows'		=> '2',
-			'std'		=> 'Cousy and affordable accomodation in a nice contest'
-		),
-		array(
-			'label'		=> 'Address',
-			'id'		=> $prefix . 'address',
+			'label'		=> 'Message bellow form',
+			'id'		=> $prefix . 'msg_bellow_form',
 			'type'		=> 'text',
-			'desc'		=> 'e.g: # A27-A28 , National Road No 1, Boeung Snoa Village, Pnom Penh, Cambodia',
+			'desc'		=> 'Thank you for your interest in Tamarind Residence.'
 		),
 		array(
 			'label'		=> 'Marker location',
 			'id'		=> $prefix . 'lat_long_map',
 			'type'		=> 'text',
 			'desc'		=> 'Enter Latitute and longitute of google map. You can get it from <a href="http://itouchmap.com/latlong.html" target="_blank">iTouchMap</a>'
-		),
-		array(
-			'label'		=> 'Email',
-			'id'		=> $prefix . 'email',
-			'type'		=> 'text',
-			'desc'		=> '',
-		),
-		array(
-			'label'		=> 'Phone',
-			'id'		=> $prefix . 'phone',
-			'type'		=> 'text',
-			'desc'		=> 'e.g: +855 012 840 056',
 		)
 	)
 );

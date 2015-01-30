@@ -90,6 +90,15 @@ function custom_theme_options() {
 			'type'		=> 'on-off',
 			'section'	=> 'general'
 		),
+
+		array(
+			'id'		=> 'contact-form',
+			'label'		=> 'Contact form',
+			'desc'		=> 'Enter shortcode of contact form 7',
+			'std'		=> '',
+			'type'		=> 'text',
+			'section'	=> 'general'
+		),
 		
 		// Blog: Excerpt Length
 		array(

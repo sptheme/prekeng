@@ -43,7 +43,7 @@
 	<div id="branch-map"></div>
 
     <div class="main clearfix">
-    	<div class="two-third">
+    	
     	<?php
 			// Start the Loop.
 			while ( have_posts() ) : the_post();
@@ -57,14 +57,14 @@
 				}
 			endwhile;
 		?>
+		<div class="two-third">
+			<?php 
+				$contact_form = ot_get_option('contact-form');
+				echo do_shortcode($contact_form); 
+			?>
 		</div><!-- .two-third -->
 
 		<div class="one-third last">
-		<p><?php echo get_post_meta($post->ID, 'sp_intro_text', true); ?></p>
-		<p><?php echo get_post_meta($post->ID, "sp_address", true); ?></p>
-		<p>E-mail: <a href="mailto:<?php echo get_post_meta($post->ID, "sp_email", true); ?>"><?php echo get_post_meta($post->ID, "sp_email", true); ?></a><br>
-		Phone: <?php echo get_post_meta($post->ID, "sp_phone", true); ?></p>
-
 		<?php $distance_maps = get_post_meta( $post->ID, 'sp_map_gallery', true ); ?>
 		<script type="text/javascript">
 			jQuery(document).ready(function ($){
@@ -75,8 +75,8 @@
 				];
 				$('#distance-select').change(function(){
 					var distancePhoto = $(this).val();
-					$('#distance-photo').parent().attr('href', distancePhotos[distancePhoto]);
-					$('#distance-photo').attr('src', distancePhotos[distancePhoto]);
+					$('#distance-photo').children().hide();
+					$('#distance-photo').children('#photo-'+distancePhoto).show();
 				});
 			});
 		</script>
@@ -89,10 +89,22 @@
 			<?php } ?>
 			</select>
 		</form>
-		<a href="<?php echo $distance_maps[0]['distance_map_photo'];?>">
-			<img id="distance-photo" src="<?php echo $distance_maps[0]['distance_map_photo'];?>">
-		</a>
+		
+		<ul id="distance-photo">
+		<?php 
+			$count = 0;
+			foreach ($distance_maps as $key => $photo) { ?>
+			<li id="photo-<?php echo $key; ?>" <?php echo ($count == 0) ? '' : 'class="hide-distance-photo"'; ?>>
+				<a href="<?php echo $photo['distance_map_photo'];?>">
+					<img src="<?php echo $photo['distance_map_photo'];?>">
+				</a>
+			</li>
+		<?php  $count++; } ?>
+		</ul> <!-- #distance-photo -->
+
 		</div> <!-- .one-third .last -->
+		<div class="clear"></div>
+		<div class="thank-msg"><?php echo get_post_meta( $post->ID, 'sp_msg_bellow_form', true ); ?></div>
 	</div><!-- #main -->
 	<?php get_sidebar();?>
 <?php do_action( 'sp_end_content_wrap_html' ); ?>
